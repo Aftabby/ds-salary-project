@@ -1,6 +1,10 @@
 import pandas as pd
 
 
+def main():
+    clean()
+
+
 def clean(
     df=pd.read_csv("../data/raw/glassdoor_jobs.csv"),
     output_path="../data/processed/salary_data_cleaned.csv",
@@ -61,3 +65,7 @@ def clean(
     df.to_csv(output_path, index=False)
 
     return df
+
+
+if __name__ == "__main__":
+    main()
