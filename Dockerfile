@@ -43,8 +43,12 @@ CMD ["python"]
 
 #Jupyter Notebook: To run the Jupyter Notebook server in the container, use the following command:
 # docker run -it --rm -p 8888:8888 my-python-app-image jupyter notebook --ip
+#OR
+# docker run -it --rm -p 8888:8888 -v "C:/path/to/project:/app" my-python-app-image bash
 # Then, Run Jupyter Notebook if needed by navigating to the desired directory(just like local machine) and manually executing:
 # jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+# Then Copy the URL from the terminal and paste it in the browser to access the Jupyter Notebook.
+
 
 
 
