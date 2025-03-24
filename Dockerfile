@@ -8,7 +8,9 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install dependencies from requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+#RUN pip install --no-cache-dir -r requirements.txt     #No Cache
+RUN pip install -r requirements.txt    #With Cache
+
 
 # Copy the rest of the project files into the container
 COPY . .
@@ -38,8 +40,23 @@ CMD ["python"]
 #OR
 # docker run -it --rm -v "C:/path/to/project:/app" my-python-app-image bash
 # 
+
+#Jupyter Notebook: To run the Jupyter Notebook server in the container, use the following command:
+# docker run -it --rm -p 8888:8888 my-python-app-image jupyter notebook --ip
+# Then, Run Jupyter Notebook if needed by navigating to the desired directory(just like local machine) and manually executing:
+# jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+
+
+
+
+
 # The  docker run  command starts a new container from the Docker image. The  -it  flag is used to run the container in interactive mode. The name of the Docker image is specified at the end of the command. 
-# The output should look like this: 
-# Python 3.12.0 (default, Dec  1 2021, 15:00:00)
+# docker run → Runs a new container.
+# -it → Runs the container interactively with a terminal.
+# --rm → Automatically removes the container when it stops (to keep things clean).
+# -v "C:/path/to/project:/app" → Mounts your local project folder to /app inside the container, so changes persist.
+# -p 8888:8888 → Maps port 8888 of the container to port 8888 on your local machine (useful if you run Jupyter).
+#my-python-app-image → The name of your Docker image.
+#bash → Opens a Bash shell inside the container.
 
 
