@@ -48,6 +48,15 @@ CMD ["python"]
 # Then, Run Jupyter Notebook if needed by navigating to the desired directory(just like local machine) and manually executing:
 # jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
 # Then Copy the URL from the terminal and paste it in the browser to access the Jupyter Notebook.
+#OR
+# docker run -it --rm -v "C:/path/to/project:/app" -p 8888:8888 -p 5000:5000 my-python-app-image bash
+# -p 5000:5000 → Maps port 5000 (default Flask port) to your local machine, allowing you to access the Flask app if you run it inside the container.
+# Run the Flask using "python app.py" and access the Flask app using http://localhost:5000 in the browser.
+# For debugging purposes (auto-reload, etc.), you can run the Flask app in container bash using:
+# Ensure you're in the right directory
+# export FLASK_APP=app.py       # Set the Flask entry point
+# export FLASK_ENV=development  # Enable auto-reload & debugging
+# flask run --host=0.0.0.0 --port=5000  # Start the Flask development server
 
 
 

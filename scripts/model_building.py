@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split, cross_val_score, GridSearc
 from sklearn.linear_model import LinearRegression, Lasso
 from sklearn.ensemble import RandomForestRegressor as RFR
 from sklearn.metrics import mean_absolute_error as mae
+import pickle
 
 
 def main():
@@ -129,8 +130,30 @@ def mae_calculate(y_test, t_ensemble):
     return mae_lnr, mae_lss, mae_rf
 
 
+def save_models(model, filepath="./../models/trained_model.pickle"):
+    pckl = {"model": model}
+    pickle.dump(pckl, open(filepath, "wb"))  # wb = write binary
+
+    return filepath
+
+    """
+    # To load the model, use pickle.load()
+    
+    # with open(filepath, "rb") as f:
+    #     pckl = pickle.load(f)
+    #     model = pckl["model"]
+    #     model.predict(x_test)
+    #     model.score(x_test, y_test)
+    #     model.get_params()
+    #     model.set_params()
+    #     model.fit(x_train, y_train)
+    #     model.predict(x_test)
+    """
+
+
 def models(
     path="./../data/processed/eda_data.csv",
+    trained_model_path="./../models/trained_model.pickle",
     linear=True,
     lasso=True,
     rforest=True,
@@ -173,6 +196,10 @@ def models(
     mae_lnr, mae_lss, mae_rf = mae_calculate(y_test, t_ensemble)
 
     print(mae_lnr, mae_lss, mae_rf)  # Debugging
+
+    # Save models
+    # Here, later we will pick the best (lowest mae) model and save it. For now, saving it manually.
+    save_models(gs.best_estimator_, trained_model_path)
 
 
 if __name__ == "__main__":
