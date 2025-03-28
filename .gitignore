@@ -2,3 +2,4 @@ structure.txt
 scripts/__pycache__/
 notebooks/.ipynb_checkpoints/
 better_comment_list.py
+app/__pycache__/
