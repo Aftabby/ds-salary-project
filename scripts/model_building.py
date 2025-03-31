@@ -7,6 +7,7 @@ from sklearn.linear_model import LinearRegression, Lasso
 from sklearn.ensemble import RandomForestRegressor as RFR
 from sklearn.metrics import mean_absolute_error as mae
 import pickle
+from utils import *
 
 
 def main():
@@ -45,6 +46,9 @@ def load_data(path):
     # One hot encoding/ Pd.get_dummies
     df_dum = pd.get_dummies(df_model, drop_first=True)
     # print(df_dum.head())   #Debugging
+    save_to_flask_sample(
+        df_dum.head()
+    )  # Save the sample data to flask app for displaying in the webpage
 
     # Train test split
     x = df_dum.drop(columns=["avg_salary"], axis=1)
@@ -53,6 +57,9 @@ def load_data(path):
     x_train, x_test, y_train, y_test = train_test_split(
         x, y, test_size=0.2, random_state=42
     )
+
+    # Saving to flask to use in app.py
+    save_to_flask_compare(x_test, y_test)
 
     return df_dum, x_train, x_test, y_train, y_test
 
@@ -131,8 +138,12 @@ def mae_calculate(y_test, t_ensemble):
 
 
 def save_models(model, filepath="./../models/trained_model.pickle"):
+    # ! For Data Science Project
     pckl = {"model": model}
     pickle.dump(pckl, open(filepath, "wb"))  # wb = write binary
+
+    # ! For Web App
+    pickle.dump(pckl, open("./../app/models/trained_model.pickle", "wb"))
 
     return filepath
 

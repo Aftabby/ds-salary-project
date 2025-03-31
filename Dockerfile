@@ -19,6 +19,10 @@ COPY . .
 CMD ["python"]
 #CMD ["bash"] 
 
+#% For Using Flask directly from DOCKERFILE (Recommended for deployment)
+#EXPOSE 5000
+#CMD ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
+
 
 # #The Dockerfile is a text file that contains the instructions to build a Docker image. The Dockerfile is used by the  docker build  command to build the Docker image. 
 # #The Dockerfile starts with the  FROM  instruction, which specifies the base image to use. In this case, we are using the official Python image from Docker Hub. 
@@ -55,14 +59,15 @@ CMD ["python"]
 #OR
 # ! # docker run -it --rm -v "C:/path/to/project:/app" -p 8888:8888 -p 5000:5000 my-python-app-image bash
 # -p 5000:5000 → Maps port 5000 (default Flask port) to your local machine, allowing you to access the Flask app if you run it inside the container.
-# Run the Flask using "python app.py" and access the Flask app using http://localhost:5000 in the browser.
+# Run the Flask using "python app.py" and access the Flask app using http://localhost:5000 in the browser. (NOT RECOMMENDED FOR DEPLOYMENT)
 # For debugging purposes (auto-reload, etc.), you can run the Flask app in container bash using:
 # Ensure you're in the right directory
 # ! # export FLASK_APP=app.py       # Set the Flask entry point
 # ! # export FLASK_ENV=development  # Enable auto-reload & debugging
 # ! # flask run --host=0.0.0.0 --port=5000  # Start the Flask development server
 #OR
-#
+# DEPLOYMENT FRIENDLY Flask App (Mentioned at the top segment of the Dockerfile)
+
 
 
 
