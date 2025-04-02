@@ -64,10 +64,64 @@
 
 <section id="data-table">
     <h2>3. Data</h2>
-    <p>The dataset used for this project was sourced from <strong>source name</strong>. It contains <strong>number of rows</strong> rows and <strong>number of columns</strong> columns. Below is a preview of the dataset:</p>
+    <div>
+    <p>The dataset has been scraped from <a href="https://www.glassdoor.com/">Glassdoor</a> using <a href="https://selenium-python.readthedocs.io/">Selenium</a>. 
+        It contains <strong> {{ context.rows }} </strong> rows and <strong> {{ context.columns }} </strong> columns. 
+        <br>
+        Below is a sample preview of the dataset:</p>
     <div class="table-container code-block">
-        {{ sample_table | safe }}
+        {{ context.sample_table | safe }}
+    </div>
+</div>
+</section>
+
+<section id="methodology">
+    <h2>4. Methodology</h2>
+    <p>The following steps were taken to complete the project:</p>
+    <ol>
+        <li>Data Scraping</li>
+        <li>Data Cleaning and Preprocessing</li>
+        <li>Exploratory Data Analysis (EDA)</li>
+        <li>Power BI Visualization</li>
+        <li>Model Building and Evaluation</li>
+    </ol>
+</section>
+
+<section id="eda">
+    <h2>5. Exploratory Data Analysis (EDA)</h2>
+    <p>Some visual insights from the data:</p>
+    <div class="graph-container">
+        <div id="graph1" class="plot"></div>
+        <div id="graph2" class="plot"></div>
     </div>
 </section>
+
+<section id="dashboard">
+    <h2>6. Dashboard</h2>
+    <p>Power BI Interactive Visual Dashboard</p>
+    <p><em>*yet to be embedded*</em></p>
+</section>
+
+<section id="model">
+    <h2>7. Model Building</h2>
+    <p>The following machine learning models were used:</p>
+    <ul>
+        <li>Model 1: <strong>Linear Regression</strong></li>
+        <li>Model 2: <strong>Lasso Regression</strong></li>
+        <li>Model 3: <strong>Random Forest</strong></li>
+    </ul>
+    <p>The best-performing model was <strong>Random Forest</strong> with an accuracy of <strong>84.89%</strong>.</p>
+    <div class="graph-container">
+        <div id="graph3" class="model-plot"></div>
+    </div>
+</section>
+
+
+
+
+<!-- Pass graph_json as a JavaScript variable -->
+<script>
+    var graphData = {{ context.graph_json | safe }};
+</script>
 
 {% endblock %}

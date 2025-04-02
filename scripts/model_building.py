@@ -58,9 +58,6 @@ def load_data(path):
         x, y, test_size=0.2, random_state=42
     )
 
-    # Saving to flask to use in app.py
-    save_to_flask_compare(x_test, y_test)
-
     return df_dum, x_train, x_test, y_train, y_test
 
 
@@ -122,7 +119,7 @@ def rforest_model(x_train, y_train):
     )  # Internally calls model.fit()
 
     # print(scores) # Debugging
-    # print(np.mean(scores)) # Debugging
+    print(f"Random forest score: {np.mean(scores)}")  # Debugging
 
     return model.fit(x_train, y_train)
 
@@ -135,6 +132,16 @@ def mae_calculate(y_test, t_ensemble):
     # print(mae_lnr, mae_lss, mae_rf) # Debugging
 
     return mae_lnr, mae_lss, mae_rf
+
+
+def mape_calculate(y_test, t_ensemble):
+    """
+    Calculates the Mean Absolute Percentage Error (MAPE).
+    @Later Add the handling to avoid division by zero (where y_test = 0)
+    """
+    y_pred = t_ensemble["RForest"]
+    mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
+    return mape
 
 
 def save_models(model, filepath="./../models/trained_model.pickle"):
@@ -204,13 +211,19 @@ def models(
         "RForest": gs.best_estimator_.predict(x_test),
     }
 
+    # Calculatin Errors/Accuracy
     mae_lnr, mae_lss, mae_rf = mae_calculate(y_test, t_ensemble)
-
     print(mae_lnr, mae_lss, mae_rf)  # Debugging
+    print(
+        f"Random forest accuracy: {100 - mape_calculate(y_test, t_ensemble)}%"
+    )  # Debugging
 
     # Save models
     # Here, later we will pick the best (lowest mae) model and save it. For now, saving it manually.
     save_models(gs.best_estimator_, trained_model_path)
+
+    # Save to flask to use in app.py -to compare the predicted and actual values
+    save_to_flask_compare(t_ensemble["RForest"], y_test)
 
 
 if __name__ == "__main__":
