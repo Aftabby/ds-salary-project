@@ -1,0 +1,117 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+  color: #333;
+}
+
+.code-block {
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
+
+/* ============================================================================ */
+/* Classes */
+/* ============================================================================ */
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.code-block {
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.main-title {
+  color: #fff;
+}
+
+.graph-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.plot {
+  width: 40%;
+  max-width: 350px;
+  min-width: 250px;
+  max-height: 250px;
+  margin: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+  padding: 0.1rem;
+
+  display: flex; /* Use flexbox to center */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.model-plot {
+  width: 100%;
+  max-width: 800px; /* Ensure it doesn't exceed the main content width */
+  height: auto; /* Adjust height automatically to maintain aspect ratio */
+  max-height: 250px;
+  margin: 0 auto; /* Center the plot horizontally */
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+  background-color: #f4f4f4; /* Optional: Background color for the plot */
+  display: flex; /* Use flexbox to center */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}

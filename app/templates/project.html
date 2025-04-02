@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Project - Aftabby
+{% endblock %}
+
+{% block header %}
+    <h1 class="main-title"> Data Scientists Salary Prediction </h1>
+    <p> Scraping data from Glassdoor and building a model to predict salaries for various roles of data scientists. </p>
+{% endblock %}
+
+{% block section %}
+<section id="introduction">
+    <h2>1. Introduction</h2>
+    <div>
+        <p>
+            Welcome! This project involves a <strong>comprehensive analysis of data scientist job listings </strong> scraped from <a href="https://www.glassdoor.com/">Glassdoor</a>.
+            Initially, raw data was collected, capturing every possible detail about the job listings, followed by <mark>data cleaning</mark> and <mark>Exploratory Data Analysis (EDA)</mark>, including feature encoding.
+        </p>
+        <p>
+            Several <mark>predictive models</mark> were applied, including
+        <ul>
+            <li>Linear Regression</li>
+            <li>Lasso Regression </li>
+            <li>Random Forest</li>
+        </ul>
+        </p>
+        <p>
+            The <code>Random Forest</code> model, which demonstrated the <strong>highest accuracy</strong>, was selected.
+        </p>
+        <p>
+            To showcase the results, a <mark>web application</mark> was developed using <mark>Flask</mark> and deployed within a <mark>Docker</mark> container. All project files and detailed documentation are available on my <a href="https://github.com/Aftabby/ds-salary-project">GitHub profile</a>.
+        </p>
+    </div>
+</section>
+
+<section id="problem-statement">
+    <h2>2. Problem Statement</h2>
+    <div>
+        <p>
+            Understanding job market trends for <strong>Data Scientist</strong> roles is crucial for both job seekers and employers.
+        </p>
+        <p>
+            This project aims to address the following key questions:
+        </p>
+        <ul>
+            <li><strong>Identifying Key Influencers:</strong> What factors
+                (such as, <mark>location</mark>, required <mark>skills</mark>, <mark>company size</mark>, and <mark>industry</mark> etc.)
+                influence salary estimates for Data Scientist roles?</li>
+            <li> <strong>Analyzing Salary Variations:</strong> How do <mark>company size</mark>, <mark>location</mark>, and <mark>industry</mark> correlate with job salary variations?</li>
+            <li>
+                <strong>Most Demanding Skill:</strong>
+                Which <strong>skills</strong> and <strong>qualifications</strong> are most frequently listed in high-paying job postings?
+            </li>
+            <li>
+                <strong>Predictive Modeling:</strong> Can we build a <em>predictive model</em> to estimate salaries based on job features?
+            </li>
+            <li>
+                <strong> Interactive Visualization:</strong> Visualing the data in an interactive manner using <code>Power BI</code> Dashboard.
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="data-table">
+    <h2>3. Data</h2>
+    <div>
+    <p>The dataset has been scraped from <a href="https://www.glassdoor.com/">Glassdoor</a> using <a href="https://selenium-python.readthedocs.io/">Selenium</a>. 
+        It contains <strong> {{ context.rows }} </strong> rows and <strong> {{ context.columns }} </strong> columns. 
+        <br>
+        Below is a sample preview of the dataset:</p>
+    <div class="table-container code-block">
+        {{ context.sample_table | safe }}
+    </div>
+</div>
+</section>
+
+<section id="methodology">
+    <h2>4. Methodology</h2>
+    <p>The following steps were taken to complete the project:</p>
+    <ol>
+        <li>Data Scraping</li>
+        <li>Data Cleaning and Preprocessing</li>
+        <li>Exploratory Data Analysis (EDA)</li>
+        <li>Power BI Visualization</li>
+        <li>Model Building and Evaluation</li>
+    </ol>
+</section>
+
+<section id="eda">
+    <h2>5. Exploratory Data Analysis (EDA)</h2>
+    <p>Some visual insights from the data:</p>
+    <div class="graph-container">
+        <div id="graph1" class="plot"></div>
+        <div id="graph2" class="plot"></div>
+    </div>
+</section>
+
+<section id="dashboard">
+    <h2>6. Dashboard</h2>
+    <p>Power BI Interactive Visual Dashboard</p>
+    <p><em>*yet to be embedded*</em></p>
+</section>
+
+<section id="model">
+    <h2>7. Model Building</h2>
+    <p>The following machine learning models were used:</p>
+    <ul>
+        <li>Model 1: <strong>Linear Regression</strong></li>
+        <li>Model 2: <strong>Lasso Regression</strong></li>
+        <li>Model 3: <strong>Random Forest</strong></li>
+    </ul>
+    <p>The best-performing model was <strong>Random Forest</strong> with an accuracy of <strong>84.89%</strong>.</p>
+    <div class="graph-container">
+        <div id="graph3" class="model-plot"></div>
+    </div>
+</section>
+
+<section id="conclusion" class="mb-5">
+    <h2>8. Conclusion</h2>
+    <p>This project provides a comprehensive analysis of data scientist job listings, offering valuable insights for both job seekers and employers. 
+        By leveraging data scraped from <a href="https://www.glassdoor.com/" target="_blank">Glassdoor</a>, the project identifies key factors influencing job offerings and salaries, analyzes job trends, and explores correlations between various job attributes. 
+        <br><br>The use of predictive modeling, particularly the Random Forest model, allows for accurate salary estimations based on job details. The interactive web application developed using <a href="https://flask.palletsprojects.com/en/stable/" target="_blank">Flask</a> and deployed in a <a href="https://docs.docker.com/" target="_blank">Docker</a> container enables users to visualize and explore these insights effectively. 
+        </p>
+
+</section>
+
+<section id="code" class="mb-5">
+    <h2>9. Code and Repository</h2>
+    <p>All project files and detailed documentation are available on the associated GitHub profile, providing a robust resource for further exploration and application. <a href="https://github.com/Aftabby/ds-salary-project" target="_blank">GitHub</a>.</p>
+    <a href="https://github.com/Aftabby/ds-salary-project" class="btn" target="_blank">View on GitHub</a>
+</section>
+
+
+<!-- Pass graph_json as a JavaScript variable -->
+<script>
+    var graphData = {{ context.graph_json | safe }};
+</script>
+
+{% endblock %}

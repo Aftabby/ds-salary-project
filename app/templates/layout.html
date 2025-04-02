@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 
+        {% block title %} DS Project - Aftabby {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+
+</head>
+<body>
+    <header>
+        {% block header %}
+            <h1>Data Science Project: Predicting XYZ</h1>
+            <p>A showcase of my data science and machine learning skills</p>
+        {% endblock %}
+    </header>
+
+    {% block section %}
+        <section id="introduction">
+            <h2>1. Introduction</h2>
+            <p>This project focuses on predicting <strong>XYZ</strong> using machine learning techniques. The goal is to demonstrate my ability to handle data, build models, and derive insights.</p>
+        </section>
+
+        <section id="problem-statement">
+            <h2>2. Problem Statement</h2>
+            <p>The problem we aim to solve is <em>XYZ problem</em>. This is important because <strong>reason why the problem matters</strong>.</p>
+        </section>
+
+        <section id="data">
+            <h2>3. Data</h2>
+            <p>The dataset used for this project was sourced from <strong>source name</strong>. It contains <strong>number of rows</strong> rows and <strong>number of columns</strong> columns. Below is a preview of the dataset:</p>
+            <div class="code-block table-container">
+                <pre>
+    Feature 1 | Feature 2 | Feature 3 | Target
+    -------------------------------------------
+    1.2    |    3.4    |    5.6    |   1
+    2.3    |    4.5    |    6.7    |   0
+                </pre>
+            </div>
+        </section>
+
+        <section id="methodology">
+            <h2>4. Methodology</h2>
+            <p>The following steps were taken to complete the project:</p>
+            <ol>
+                <li>Data Cleaning and Preprocessing</li>
+                <li>Exploratory Data Analysis (EDA)</li>
+                <li>Feature Engineering</li>
+                <li>Model Building and Evaluation</li>
+                <li>Hyperparameter Tuning</li>
+            </ol>
+        </section>
+
+        <section id="eda">
+            <h2>5. Exploratory Data Analysis (EDA)</h2>
+            <p>Key insights from the data:</p>
+            <ul>
+                <li>Insight 1: <em>e.g., Correlation between features</em></li>
+                <li>Insight 2: <em>e.g., Distribution of target variable</em></li>
+            </ul>
+            <img src="eda_plot.png" alt="EDA Plot">
+        </section>
+
+        <section id="model">
+            <h2>6. Model Building</h2>
+            <p>The following machine learning models were used:</p>
+            <ul>
+                <li>Model 1: <strong>Linear Regression</strong></li>
+                <li>Model 2: <strong>Random Forest</strong></li>
+                <li>Model 3: <strong>Gradient Boosting</strong></li>
+            </ul>
+            <p>The best-performing model was <strong>Model Name</strong> with an accuracy of <strong>XX%</strong>.</p>
+        </section>
+
+        <section id="results">
+            <h2>7. Results</h2>
+            <p>The final results of the project are as follows:</p>
+            <ul>
+                <li>Metric 1: <strong>Value</strong></li>
+                <li>Metric 2: <strong>Value</strong></li>
+            </ul>
+            <img src="results_plot.png" alt="Results Plot">
+        </section>
+
+        <section id="conclusion">
+            <h2>8. Conclusion</h2>
+            <p>This project successfully demonstrated the ability to predict <strong>XYZ</strong> with high accuracy. The key takeaways are:</p>
+            <ul>
+                <li>Takeaway 1</li>
+                <li>Takeaway 2</li>
+            </ul>
+        </section>
+
+        <section id="code">
+            <h2>9. Code and Repository</h2>
+            <p>The full code for this project is available on <a href="https://github.com/your-repo" target="_blank">GitHub</a>.</p>
+            <a href="https://github.com/your-repo" class="btn" target="_blank">View on GitHub</a>
+        </section>
+
+    {% endblock %}
+
+
+    <footer>
+        <p>&copy; 2025 Aftabby. All rights reserved.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--
+To add a favicon(which is a small icon displayed in the browser tab) to your layout.html, 
+you can use the <link> tag in the <head> section of your HTML.
+Here’s a general idea of how you might do it:
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+This line assumes you have a favicon.png file in your static folder. 
+The "url_for" function helps Flask find the correct path to your favicon. 
+The -- rel="icon" -- attribute is what specifically indicates to the browser that this file should be used as the tab icon.
+-->
+
