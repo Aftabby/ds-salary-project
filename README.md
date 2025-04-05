@@ -67,7 +67,7 @@ To run the project locally:
 - **Automation**: Selenium
 
 ## Contributors
-- **Aftabby** - [GitHub Profile](https://github.com/Aftabby)
+- **Aftabby** - [GitHub Profile](https://github.com/Aftabby) [Portfolio Website](https://www.aftabby.com)
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
